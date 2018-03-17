@@ -1,0 +1,60 @@
+*{
+    margin: 0;
+    padding: 0
+}
+.container{
+    margin: 0 auto;
+    width: 70%;
+}
+.comments{
+    margin-left: 20px;
+    margin-top: 10px;
+}
+.postmessage{
+    margin-left: 20px;
+}
+.posts{
+    padding: 20px;
+    width: 450px;
+    display: block;
+}
+h1{
+    display: inline-block;
+}
+.wallheader{
+    display: inline-block;
+    margin-left: 100px; 
+}
+div.wallheader{
+    width: 200px;
+}
+input[type=text]{
+    width: 400px;
+    height: 50px;
+    overflow-y: scroll;
+    margin-left: 20px;
+}
+.comments input[type=submit]{
+    float: right;
+    background-color: green;
+    color: white;
+    padding: 2px;
+}
+.messages input[type=submit]{
+    float: right;
+    background-color: blue;
+    color: white;
+    padding: 2px;
+}
+#logoutform{
+    display: inline;
+    margin-left: 20px;
+}
+#logoff{
+    color: #7BA3C6;
+    background: none;
+    box-sizing: none;
+    border: none;
+    display: inline;
+    text-decoration: underline;
+}

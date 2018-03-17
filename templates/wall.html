@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Your Wall</title>
+    <link rel="stylesheet" href=" {{ url_for('static', filename='wall.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>CodingDojo Wall</h1>
+            <div class="wallheader">
+                <span> Welcome {{session["name"]}} </span>
+                <form id=logoutform action="/logout" method="post">
+                    <input id="logoff" type="submit" value="Log Off">
+                </form>
+            </div>
+        </header>
+        <div class="posts">
+            <h3>Post a message</h3>
+            <form class = "messages"  action="/postmessage" method="post">
+                <input type="text" name="message"><br><br>
+                <input type="submit" value="Post a message">
+                <input type="hidden" name="usersid" value = {{session["userid"]}}>
+            </form>
+            {% for m in allmessages %}
+            <h4>{{m['messagename']}} - {{m['messagedate']}} </h4>
+            <p class="postmessage">{{m['messages']}}</p>
+                {% for c in allcomments %}
+                    {% if m['messagesid'] == c['messagesid'] %}
+                        <div class="comments">
+                            <h4 class="comments"> {{c['commentname']}} - {{c['commentdate']}} </h4>
+                            <p class="comments">{{c['comment']}}</p>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                <form class="comments" action="/postcomment" method="post">
+                    <input type="text" name="comment"><br><br>
+                    <input type="submit" value="Post a comment">
+                    <input type="hidden" name="usersid" value = {{session["userid"]}}>
+                    <input type="hidden" name="messageid" value = {{m['messagesid']}}>
+                </form>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
